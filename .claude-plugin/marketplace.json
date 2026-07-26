@@ -1,0 +1,15 @@
+{
+  "name": "lento-plugin",
+  "owner": {
+    "name": "Lento",
+    "url": "https://lento.press"
+  },
+  "description": "Skills + MCP tools for the Lento thermal printer.",
+  "plugins": [
+    {
+      "name": "lento",
+      "source": "./lento",
+      "description": "Crosswords, puzzles, lists, and more on your Lento thermal printer. Pairs with the lento MCP server."
+    }
+  ]
+}

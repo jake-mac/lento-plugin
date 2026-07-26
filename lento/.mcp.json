@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "lento": {
+      "command": "/usr/local/lento/lento-mcp"
+    }
+  }
+}

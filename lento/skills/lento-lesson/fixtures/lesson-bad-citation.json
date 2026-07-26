@@ -1,0 +1,15 @@
+{
+  "printer_id": "test",
+  "document": {
+    "version": 1,
+    "page": { "widthMm": 80 },
+    "content": { "type": "stack", "children": [
+      { "type": "text", "runs": [{ "text": "LENTO · LESSON 02 · the basics" }] },
+      { "type": "text", "level": 1, "runs": [{ "text": "The PrintDoc" }] },
+      { "type": "text", "runs": [{ "text": "Every print becomes a little tree of blocks." }] },
+      { "type": "text", "runs": [{ "text": "[✓] verified in this app: PrintDoc = page + block tree. [02]" }] },
+      { "type": "text", "runs": [{ "text": "Tomorrow -> Lesson 03: kernel vs shell." }] },
+      { "type": "text", "runs": [{ "text": "tone: plain · level: curious · goal: architecture · learns: visual" }] }
+    ] }
+  }
+}

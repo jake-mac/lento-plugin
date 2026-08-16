@@ -44,23 +44,30 @@ A vertical `stack` of text blocks, in this order:
 2. **Title** — a `text` block `level:1`
 3. **Hook** — one line
 4. **Concept + visual** — prose + a text-built diagram (safe glyphs)
-5. **"WHERE THIS COMES FROM"** — one tight lineage line (`[H]` facts)
-6. **Verified line** — `[✓] verified in this app: <claim>. [NN]` (or `[~] on the roadmap: ...`)
+5. **"WHERE THIS COMES FROM"** — one tight lineage line (`[H]` facts), **with its own `[NN]`**
+6. **Verified line** — `[✓] verified in this app: <claim>. [NN]` (or `[⚖] contested: ...` / `[~] on the roadmap: ...`)
 7. **Citation def** — `[NN] <what> -> <file path or source>`
 8. **Teaser** — `Tomorrow -> Lesson NN+1: <topic>`
 9. **Footer** — `tone: <t> · level: <l> · goal: <g> · learns: <type>`
 
 ## Marks (never blur fact and plan)
 
-- `[✓]` — verified now; carry the citation. Only these may be stated as "how it works." Never mark
-  something not yet built as `[✓]` — a feature that doesn't exist yet is `[~]` roadmap, no matter how
-  confident the description sounds.
+- `[✓]` — verified now; only these may be stated as "how it works." Never mark something not yet
+  built as `[✓]` — a feature that doesn't exist yet is `[~]` roadmap, no matter how confident the
+  description sounds.
+- `[⚖]` — **contested**; the sources genuinely disagree. Say so and cite a source for the position
+  you present. Do not silently pick a side and mark it `[✓]`.
 - `[~]` — roadmap; frame as "on the roadmap," never as current behavior.
 - `[H]` — historical / lineage.
 
-Use these three marks **exactly as written** — `[✓]` / `[~]` / `[H]`. Do not substitute `[OK]` or
-any other spelling; the pre-print checker (`check-lesson.mjs`) keys its citation check off the literal
-`[✓]` glyph, so a substitute both misrepresents the fact's status *and* silently defeats the check.
+Use these four marks **exactly as written** — `[✓]` / `[⚖]` / `[~]` / `[H]`. Do not substitute
+`[OK]` or any other spelling; `check-lesson.mjs` matches these literal glyphs, so a substitute both
+misrepresents the claim's status *and* trips the gate's pseudo-mark rejector.
+
+**Every marked line carries its own `[NN]` citation, on that same line** — including `[⚖]`, `[~]`
+and `[H]` lines, not just `[✓]`. The gate checks per line, so a lineage or roadmap line without a
+citation fails the print even when the rest of the lesson is sourced. Each referenced `[NN]` must
+also appear as a definition line `[NN] <what> -> <source>`.
 
 Anything you can't back from the Codex under one of these marks: **cut it.**
 
@@ -97,8 +104,10 @@ diagram lines short; a lesson should be bite-size — one concept, not a chapter
 |---|---|
 | Facts from memory / a fresh code read | Draw ONLY from the Codex; it's the verified source. |
 | Teaching a scaffolded (unauthored) chapter | Say it needs authoring; don't invent it. |
-| Using `[OK]` or any other substitute mark | Use exactly `[✓]` / `[~]` / `[H]` — the checker keys citations off `[✓]` literally. |
+| Using `[OK]` or any other substitute mark | Use exactly `[✓]` / `[⚖]` / `[~]` / `[H]` — the checker matches these literally and rejects look-alikes. |
+| A marked line with no `[NN]` on it | Every marked line cites its own source — `[H]` lineage and `[~]` roadmap lines included, not just `[✓]`. |
 | Marking a not-yet-built feature as `[✓]` verified | Not-built = `[~]` roadmap, never `[✓]`. Don't blur built vs. planned. |
+| Picking a side on a disputed point and marking it `[✓]` | If sources genuinely disagree it's `[⚖]` contested — say so and cite the position you present. |
 | Stating a `[~]` roadmap item as fact | Keep the mark; frame as "on the roadmap." |
 | A glyph outside the safe set (e.g. `₿`) | Use a confirmed-safe glyph; arrows/box-drawing/checks ARE safe now (#97), `₿`-type ones aren't. |
 | Markdown instead of a block tree | Emit `print_document`; see the `lento-layout` skill. |

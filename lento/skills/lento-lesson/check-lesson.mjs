@@ -3,7 +3,8 @@
 // (which validates PrintDoc structure); this adds the lesson-specific rules:
 //   1. glyph-safety — no characters outside the verified-safe set (they print as tofu)
 //   2. skeleton     — required lesson sections are present
-//   3. citations    — every [✓] verified claim references a citation that is also defined
+//   3. marks        — every [✓]/[⚖]/[~]/[H] marked claim carries a [NN] citation on its own line,
+//                      every referenced [NN] is defined, and no unrecognized pseudo-mark (e.g. [OK]) is used
 // Exit 1 on any hard failure, else 0.
 //   node check-lesson.mjs lesson.json        # {printer_id, document} tool args, or a bare PrintDoc
 //   cat lesson.json | node check-lesson.mjs
@@ -16,7 +17,7 @@ import { readFileSync } from "node:fs";
 // this ONE constant if the fallback font ever changes. Anything not listed is rejected as unconfirmed.
 const SAFE_NONASCII = new Set([
   ..."·—–…“”‘’",              // punctuation (Public Sans native)
-  ..."✓✗☐☑",                  // checks + boxes (fallback)
+  ..."✓✗☐☑⚖",                 // checks + boxes, + the contested mark ⚖ (fallback)
   ..."→←↑↓",                  // arrows (fallback)
   ..."─│┌┐└┘├┤┬┴┼",           // box-drawing (mono fallback — for diagrams)
   ..."•◦▪▸★",                 // bullets + star (fallback)
@@ -29,7 +30,12 @@ const isSafe = (ch) => {
 function collectText(block, out) {
   if (!block || typeof block !== "object") return;
   if (block.type === "text" && Array.isArray(block.runs)) {
-    for (const r of block.runs) if (r && typeof r.text === "string") out.push(r.text);
+    // One text block is ONE line — its runs are styled spans of the same line, not
+    // separate lines. Pushing each run separately would make the mark and its [NN]
+    // land on different "lines" the moment an author bolds the citation, failing the
+    // per-line citation rule on a lesson that visibly carries it. verify-claims.mjs
+    // joins runs the same way; the two must agree on what a line is.
+    out.push(block.runs.map((r) => (r && typeof r.text === "string" ? r.text : "")).join(""));
   }
   if (Array.isArray(block.children)) for (const c of block.children) collectText(c, out);
   if (block.type === "table" && Array.isArray(block.rows)) {
@@ -74,22 +80,31 @@ function main() {
   if (!/tomorrow/i.test(all)) errors.push('missing the "Tomorrow ->" teaser (progression).');
   if (!/\btone:/i.test(all)) errors.push('missing the profile footer ("tone: ... level: ... goal: ...").');
 
-  // 3. citations — DOC-LEVEL gate (not per-[✓]-line binding): if any [✓] exists there must be at
-  //    least one [NN] marker, and every referenced [NN] must be defined as a "[NN] text" line. It
-  //    catches dangling refs + a wholly-uncited doc; binding each [✓] line to its own citation is a
-  //    filed follow-up (see SKILLS-BACKLOG.md). Note a definition line "[NN] ..." also counts as a ref.
-  const hasVerified = all.includes("[✓]");
-  const refs = [...all.matchAll(/\[(\d{1,3}[a-z]?)\]/g)].map((m) => m[1]);
-  const defined = new Set([...all.matchAll(/^\s*\[(\d{1,3}[a-z]?)\]\s+\S/gm)].map((m) => m[1]));
-  const undefinedRefs = [...new Set(refs)].filter((r) => !defined.has(r));
-  if (hasVerified && refs.length === 0) errors.push("a [✓] verified line carries no citation marker like [01] — every verified claim must cite its source.");
+  // 3. marks + citations — every line bearing a mark must carry a [NN] token
+  //    on that line, and every referenced [NN] must be defined as "[NN] text".
+  const MARKS = ["[✓]", "[⚖]", "[~]", "[H]"];
+  const lines = all.split("\n");
+  const refRe = /\[(\d{1,3}[a-z]?)\]/g;
+  const defined = new Set([...all.matchAll(/(?:^|\s)\[(\d{1,3}[a-z]?)\][ \t]+\S/g)].map((m) => m[1]));
+  const allRefs = [...all.matchAll(refRe)].map((m) => m[1]);
+  const undefinedRefs = [...new Set(allRefs)].filter((r) => !defined.has(r));
+  for (const line of lines) {
+    if (!MARKS.some((mk) => line.includes(mk))) continue;
+    if (!refRe.test(line)) { refRe.lastIndex = 0;
+      errors.push(`a marked claim carries no [NN] citation: ${JSON.stringify(line.trim().slice(0, 60))}`);
+    }
+    refRe.lastIndex = 0;
+  }
   if (undefinedRefs.length) errors.push(`citation(s) referenced but never defined: ${undefinedRefs.map((r) => `[${r}]`).join(", ")}.`);
+  // reject unrecognized pseudo-marks that look like a mark but aren't one of the four
+  const pseudo = [...all.matchAll(/\[(OK|verified|fact|\?|!|x|X)\]/g)].map((m) => m[0]);
+  if (pseudo.length) errors.push(`unrecognized mark(s) — use exactly [✓]/[⚖]/[~]/[H]: ${[...new Set(pseudo)].join(", ")}`);
 
   if (errors.length) {
     console.error("LESSON CHECK FAILED:\n- " + errors.join("\n- "));
     process.exit(1);
   }
-  console.log("lesson OK: glyphs safe, skeleton present, citations resolved.");
+  console.log("lesson OK: glyphs safe, skeleton present, marks + citations resolved.");
 }
 
 main();

@@ -1,0 +1,6 @@
+{ "claims": [
+  { "mark": "[✓]", "text": "fact: the render pipeline reduces to 1-bit dots.", "citations": ["01"] },
+  { "mark": "[⚖]", "text": "contested: two camps differ on dithering choice.", "citations": ["02"] },
+  { "mark": "[~]", "text": "emerging: a proposed per-model feed floor.", "citations": ["03"] },
+  { "mark": "[H]", "text": "history: ESC/POS dates to the 1980s.", "citations": ["04"] }
+] }

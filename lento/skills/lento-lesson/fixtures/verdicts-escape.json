@@ -1,0 +1,3 @@
+{ "verdicts": [
+  { "id": "c01", "verdict": "CONFIRMED", "evidence": { "file": "../SKILL.md", "line": 1, "quote": "lento-lesson" } }
+] }

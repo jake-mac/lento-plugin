@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "mark": "FACT",
+      "text": "a claim with no citations at all.",
+      "citations": []
+    }
+  ],
+  "sources": {}
+}

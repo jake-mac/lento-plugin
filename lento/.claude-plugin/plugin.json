@@ -1,6 +1,6 @@
 {
   "name": "lento",
-  "version": "0.1.4",
+  "version": "0.1.8",
   "description": "Skills for making great things on your Lento thermal printer — crosswords, puzzles, lists, and more. Pairs with the lento MCP server.",
   "author": { "name": "Lento", "url": "https://lento.press" },
   "homepage": "https://lento.press"

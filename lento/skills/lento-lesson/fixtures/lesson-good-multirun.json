@@ -7,6 +7,7 @@
     },
     "content": {
       "type": "stack",
+      "gap": 2.5,
       "children": [
         {
           "type": "text",
@@ -26,46 +27,118 @@
           ]
         },
         {
-          "type": "text",
-          "runs": [
+          "type": "stack",
+          "gap": 1,
+          "children": [
             {
-              "text": "[✓] fact: the render pipeline reduces to 1-bit dots. "
+              "type": "text",
+              "runs": [
+                {
+                  "text": "FACT",
+                  "bold": true
+                }
+              ]
             },
             {
-              "text": "[01]",
-              "bold": true
+              "type": "text",
+              "runs": [
+                {
+                  "text": "the render pipeline reduces to 1-bit dots. "
+                },
+                {
+                  "text": "[01]",
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "the default resolution is 203 dpi. [02]"
+                }
+              ]
             }
           ]
+        },
+        {
+          "type": "stack",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "CONTESTED",
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "two camps differ on dithering choice. [03]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "stack",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "EMERGING",
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "a proposed per-model feed floor. [04]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "stack",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "HISTORY",
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "ESC/POS dates to the 1980s. [05]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rule",
+          "style": "dashed"
         },
         {
           "type": "text",
           "runs": [
             {
-              "text": "[⚖] contested: two camps differ on dithering choice. [02]"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "runs": [
-            {
-              "text": "[~] emerging: a proposed per-model feed floor. [03]"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "runs": [
-            {
-              "text": "[H] history: ESC/POS dates to the 1980s. [04]"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "runs": [
-            {
-              "text": "[01] render-doc.ts:33 · [02] dithering.ts · [03] models.ts · [04] external"
+              "text": "[01] render-doc.ts:33 · [02] render-doc.ts:58 · [03] dithering.ts · [04] models.ts · [05] external"
             }
           ]
         },

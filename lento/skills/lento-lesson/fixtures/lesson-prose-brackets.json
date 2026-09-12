@@ -1,0 +1,16 @@
+{
+  "printer_id": "test",
+  "document": { "version": 1, "page": { "widthMm": 80 }, "content": { "type": "stack", "gap": 2, "children": [
+    { "type": "text", "runs": [{ "text": "LENTO · LESSON 12 · brackets in prose" }] },
+    { "type": "text", "level": 1, "runs": [{ "text": "Brackets a lesson about code must be able to print" }] },
+    { "type": "stack", "gap": 0, "children": [
+      { "type": "text", "runs": [{ "text": "FACT", "bold": true }] },
+      { "type": "text", "runs": [{ "text": "The loop reads children[i] once per pass. [01]" }] },
+      { "type": "text", "runs": [{ "text": "Every claim carries its own [NN] citation token. [02]" }] },
+      { "type": "text", "runs": [{ "text": "A finished task prints as [x] in a task list. [03]" }] }
+    ] },
+    { "type": "text", "runs": [{ "text": "[01] a -> sources/render-doc-sample.txt:3 · [02] b -> sources/render-doc-sample.txt:3 · [03] c -> sources/render-doc-sample.txt:1" }] },
+    { "type": "text", "runs": [{ "text": "Tomorrow -> Lesson 13." }] },
+    { "type": "text", "runs": [{ "text": "tone: plain · level: curious · goal: architecture · learns: visual" }] }
+  ] } }
+}

@@ -1,0 +1,78 @@
+{
+  "printer_id": "test",
+  "document": {
+    "version": 1,
+    "page": {
+      "widthMm": 80
+    },
+    "content": {
+      "type": "stack",
+      "children": [
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "LENTO · LESSON 09 · mixed citations"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "level": 1,
+          "runs": [
+            {
+              "text": "One good citation, one that is not"
+            }
+          ]
+        },
+        {
+          "type": "stack",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "FACT",
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "the render pipeline reduces to 1-bit dots. [01][02]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "[01] the 1-bit threshold -> sources/render-doc-sample.txt:3 · [02] external"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "Tomorrow -> Lesson 10."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "tone: plain · level: curious · goal: architecture · learns: visual"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{ "verdicts": [
+  { "id": "c01", "verdict": "CONFIRMED", "evidence": { "file": "sources/render-doc-sample.txt", "line": 3, "quote": "const threshold = 128" } },
+  { "id": "c02", "verdict": "CONFIRMED", "evidence": { "file": "sources/render-doc-sample.txt", "line": 1, "quote": "sample source for the verdict checker" } }
+] }

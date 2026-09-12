@@ -1,0 +1,13 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "mark": "FACT",
+      "text": "a claim citing a ref that was never defined.",
+      "citations": [
+        "99"
+      ]
+    }
+  ],
+  "sources": {}
+}

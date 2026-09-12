@@ -1,0 +1,33 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "mark": "FACT",
+      "text": "1. **A numbered claim.** It cites its source. ``",
+      "citations": [
+        "01a"
+      ]
+    },
+    {
+      "id": "c02",
+      "mark": "FACT",
+      "text": "2. **A second claim after the continuation.** ``",
+      "citations": [
+        "01b"
+      ]
+    },
+    {
+      "id": "c03",
+      "mark": "HISTORY",
+      "text": "- **A lineage claim.** ``",
+      "citations": [
+        "01c"
+      ]
+    }
+  ],
+  "sources": {
+    "01a": "the first -> src/one.ts:1",
+    "01b": "the second -> src/two.ts:2",
+    "01c": "the third -> src/three.ts:3"
+  }
+}

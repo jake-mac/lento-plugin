@@ -2,15 +2,159 @@
   "printer_id": "test",
   "document": {
     "version": 1,
-    "page": { "widthMm": 80 },
-    "content": { "type": "stack", "children": [
-      { "type": "text", "runs": [{ "text": "LENTO · LESSON 02 · the basics" }] },
-      { "type": "text", "level": 1, "runs": [{ "text": "The PrintDoc" }] },
-      { "type": "text", "runs": [{ "text": "Every print becomes a little tree of blocks." }] },
-      { "type": "text", "runs": [{ "text": "[✓] verified in this app: PrintDoc = page + block tree. [02]" }] },
-      { "type": "text", "runs": [{ "text": "[02] the block tree -> document.ts, cost ₿0" }] },
-      { "type": "text", "runs": [{ "text": "Tomorrow -> Lesson 03: kernel vs shell." }] },
-      { "type": "text", "runs": [{ "text": "tone: plain · level: curious · goal: architecture · learns: visual" }] }
-    ] }
+    "page": {
+      "widthMm": 80
+    },
+    "content": {
+      "type": "stack",
+      "gap": 2.5,
+      "children": [
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "LENTO · LESSON 01 · the basics"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "level": 1,
+          "runs": [
+            {
+              "text": "Marks, verified"
+            }
+          ]
+        },
+        {
+          "type": "stack",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "FACT",
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "the render pipeline reduces to 1-bit dots ₿. [01]"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "the default resolution is 203 dpi. [02]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "stack",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "CONTESTED",
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "two camps differ on dithering choice. [03]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "stack",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "EMERGING",
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "a proposed per-model feed floor. [04]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "stack",
+          "gap": 1,
+          "children": [
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "HISTORY",
+                  "bold": true
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "runs": [
+                {
+                  "text": "ESC/POS dates to the 1980s. [05]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rule",
+          "style": "dashed"
+        },
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "[01] render-doc.ts:33 · [02] render-doc.ts:58 · [03] dithering.ts · [04] models.ts · [05] external"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "Tomorrow -> Lesson 02."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "tone: plain · level: curious · goal: architecture · learns: visual"
+            }
+          ]
+        }
+      ]
+    }
   }
 }

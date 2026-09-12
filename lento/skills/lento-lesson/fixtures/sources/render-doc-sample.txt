@@ -1,0 +1,16 @@
+// sample source for the verdict checker's quote test
+export function extractBitmap(canvas) {
+  const threshold = 128; // 1-bit
+  return toBitmap(canvas, threshold);
+}
+
+// A second function, deliberately far from line 3: the ±3-line window must not
+// reach it, so a quote taken from here cannot confirm a claim citing line 3.
+export function ditherFloydSteinberg(pixels, width) {
+  const out = new Uint8Array(pixels.length);
+  for (let i = 0; i < pixels.length; i++) {
+    out[i] = pixels[i] > 128 ? 1 : 0; // no error diffusion in this sample
+  }
+  return out;
+}
+// end of sample

@@ -1,0 +1,4 @@
+{ "verdicts": [
+  { "id": "c01", "verdict": "CONFIRMED" },
+  { "id": "c02", "verdict": "UNSUPPORTED" }
+] }

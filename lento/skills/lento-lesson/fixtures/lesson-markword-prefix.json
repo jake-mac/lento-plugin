@@ -1,0 +1,16 @@
+{
+  "printer_id": "test",
+  "document": { "version": 1, "page": { "widthMm": 80 }, "content": { "type": "stack", "gap": 2, "children": [
+    { "type": "text", "runs": [{ "text": "LENTO · LESSON 11 · prefixes" }] },
+    { "type": "text", "level": 1, "runs": [{ "text": "A claim may start with a mark word" }] },
+    { "type": "stack", "gap": 0, "children": [
+      { "type": "text", "runs": [{ "text": "FACT", "bold": true }] },
+      { "type": "text", "runs": [{ "text": "HISTORY-mode dithering shipped in 2019. [01]" }] },
+      { "type": "text", "runs": [{ "text": "FACTORY presets are a separate concern. [02]" }] },
+      { "type": "text", "runs": [{ "text": "The third claim must survive both of those. [03]" }] }
+    ] },
+    { "type": "text", "runs": [{ "text": "[01] a -> sources/render-doc-sample.txt:3 · [02] b -> sources/render-doc-sample.txt:3 · [03] c -> sources/render-doc-sample.txt:1" }] },
+    { "type": "text", "runs": [{ "text": "Tomorrow -> Lesson 12." }] },
+    { "type": "text", "runs": [{ "text": "tone: plain · level: curious · goal: architecture · learns: visual" }] }
+  ] } }
+}

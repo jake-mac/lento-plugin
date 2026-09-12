@@ -1,0 +1,14 @@
+{
+  "printer_id": "test",
+  "document": { "version": 1, "page": { "widthMm": 80 }, "content": { "type": "stack", "gap": 2, "children": [
+    { "type": "text", "runs": [{ "text": "LENTO · LESSON 13 · mid-claim references" }] },
+    { "type": "text", "level": 1, "runs": [{ "text": "A citation named mid-sentence" }] },
+    { "type": "text", "runs": [{ "text": "[01] kernel purity -> sources/render-doc-sample.txt:3" }] },
+    { "type": "stack", "gap": 0, "children": [
+      { "type": "text", "runs": [{ "text": "FACT", "bold": true }] },
+      { "type": "text", "runs": [{ "text": "That rule from [01] has held since the first commit. [01]" }] }
+    ] },
+    { "type": "text", "runs": [{ "text": "Tomorrow -> Lesson 14." }] },
+    { "type": "text", "runs": [{ "text": "tone: plain · level: curious · goal: architecture · learns: visual" }] }
+  ] } }
+}

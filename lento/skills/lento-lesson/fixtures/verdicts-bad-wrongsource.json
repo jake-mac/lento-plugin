@@ -1,0 +1,4 @@
+{ "verdicts": [
+  { "id": "c01", "verdict": "CONFIRMED", "evidence": { "file": "sources/render-doc-sample.txt", "line": 4, "quote": "return toBitmap(canvas, threshold)" } },
+  { "id": "c02", "verdict": "UNSUPPORTED" }
+] }

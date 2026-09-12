@@ -1,0 +1,16 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "mark": "FACT",
+      "text": "a claim citing one real source and one ref with no definition at all.",
+      "citations": [
+        "01",
+        "99"
+      ]
+    }
+  ],
+  "sources": {
+    "01": "sources/render-doc-sample.txt:3"
+  }
+}

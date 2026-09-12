@@ -1,0 +1,15 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "mark": "FACT",
+      "text": "a claim citing something unlocatable.",
+      "citations": [
+        "01"
+      ]
+    }
+  ],
+  "sources": {
+    "01": "external"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "printer_id": "test",
+  "document": {
+    "version": 1,
+    "page": {
+      "widthMm": 80
+    },
+    "content": {
+      "type": "stack",
+      "gap": 2.5,
+      "children": [
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "LENTO · LESSON 01 · the basics"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "level": 1,
+          "runs": [
+            {
+              "text": "Marks, verified"
+            }
+          ]
+        },
+        {
+          "type": "rule",
+          "style": "dashed"
+        },
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "[01] render-doc.ts:33 · [02] render-doc.ts:58 · [03] dithering.ts · [04] models.ts · [05] external"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "Tomorrow -> Lesson 02."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "runs": [
+            {
+              "text": "tone: plain · level: curious · goal: architecture · learns: visual"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

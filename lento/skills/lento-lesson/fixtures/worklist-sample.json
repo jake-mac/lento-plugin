@@ -1,0 +1,24 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "mark": "FACT",
+      "text": "the render pipeline reduces to 1-bit dots.",
+      "citations": [
+        "01"
+      ]
+    },
+    {
+      "id": "c02",
+      "mark": "HISTORY",
+      "text": "this sample stands in for a real source file.",
+      "citations": [
+        "02"
+      ]
+    }
+  ],
+  "sources": {
+    "01": "sources/render-doc-sample.txt:3",
+    "02": "sources/render-doc-sample.txt:1"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "mark": "FACT",
+      "text": "a claim whose citations field is not an array.",
+      "citations": "01"
+    }
+  ],
+  "sources": {
+    "01": "sources/render-doc-sample.txt:3"
+  }
+}

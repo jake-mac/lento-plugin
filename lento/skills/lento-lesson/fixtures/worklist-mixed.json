@@ -1,0 +1,17 @@
+{
+  "claims": [
+    {
+      "id": "c01",
+      "mark": "FACT",
+      "text": "the render pipeline reduces to 1-bit dots.",
+      "citations": [
+        "01",
+        "02"
+      ]
+    }
+  ],
+  "sources": {
+    "01": "the 1-bit threshold -> sources/render-doc-sample.txt:3",
+    "02": "external"
+  }
+}

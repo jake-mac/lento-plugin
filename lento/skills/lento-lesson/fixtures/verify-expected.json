@@ -1,6 +1,51 @@
-{ "claims": [
-  { "mark": "[✓]", "text": "fact: the render pipeline reduces to 1-bit dots.", "citations": ["01"] },
-  { "mark": "[⚖]", "text": "contested: two camps differ on dithering choice.", "citations": ["02"] },
-  { "mark": "[~]", "text": "emerging: a proposed per-model feed floor.", "citations": ["03"] },
-  { "mark": "[H]", "text": "history: ESC/POS dates to the 1980s.", "citations": ["04"] }
-] }
+{
+  "claims": [
+    {
+      "id": "c01",
+      "mark": "FACT",
+      "text": "the render pipeline reduces to 1-bit dots.",
+      "citations": [
+        "01"
+      ]
+    },
+    {
+      "id": "c02",
+      "mark": "FACT",
+      "text": "the default resolution is 203 dpi.",
+      "citations": [
+        "02"
+      ]
+    },
+    {
+      "id": "c03",
+      "mark": "CONTESTED",
+      "text": "two camps differ on dithering choice.",
+      "citations": [
+        "03"
+      ]
+    },
+    {
+      "id": "c04",
+      "mark": "EMERGING",
+      "text": "a proposed per-model feed floor.",
+      "citations": [
+        "04"
+      ]
+    },
+    {
+      "id": "c05",
+      "mark": "HISTORY",
+      "text": "ESC/POS dates to the 1980s.",
+      "citations": [
+        "05"
+      ]
+    }
+  ],
+  "sources": {
+    "01": "render-doc.ts:33",
+    "02": "render-doc.ts:58",
+    "03": "dithering.ts",
+    "04": "models.ts",
+    "05": "external"
+  }
+}

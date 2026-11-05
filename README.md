@@ -3,7 +3,7 @@
 > **Generated — do not edit here.** The source of truth is `plugin/lento/` in the private
 > Lento monorepo; this repo is overwritten by that repo's `publish-plugin` workflow.
 
-Published from monorepo commit `2d36be83db9dd5c14f29a98a4b83de8f25ed1432` (plugin version `0.1.13`).
+Published from monorepo commit `d320429f00884cef457842e667c7b76ae8807dc0` (plugin version `0.1.14`).
 
 ## Install (Claude Code / Desktop / Cursor — macOS)
 

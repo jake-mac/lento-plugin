@@ -21,7 +21,7 @@ the paper, and pick a difficulty.
    More/longer words need a bigger grid.
 2. **Pick a size and difficulty.**
    - Size: number of rows/cols. Fit the paper — **≤10 @ 58mm, ≤15 @ 80mm** (call
-     `list_printers` for the width, or default to ≤10). The longest word must fit.
+     `lento_search` (kind `printer`) for the width, or default to ≤10). The longest word must fit.
    - Difficulty: `easy` = across + down only (kids); `medium` = adds diagonals;
      `hard` = adds backwards. Default `easy`.
 3. **Generate** (if a sandbox is available, e.g. Claude Code):
@@ -51,7 +51,7 @@ direction; the longest word fits; the grid is within the paper column budget.
 
 ```json
 {
-  "printer_id": "<from list_printers>",
+  "printer_id": "<from lento_search, kind printer>",
   "puzzle": {
     "title": "Ocean",
     "grid": [["W","H","A","L","E"], ["...", "..."]],

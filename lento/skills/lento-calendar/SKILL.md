@@ -24,7 +24,7 @@ So "print next Tuesday" for a `day` view needs that Tuesday's exact ISO date; "p
 
 ```
 {
-  printer_id: string,        // required — from list_printers
+  printer_id: string,        // required — from lento_search (kind "printer")
   view: "month"|"week"|"day"|"year",  // required
   date: "YYYY-MM-DD",        // required — a real calendar date; anchors per the table above
   title?: string,            // override the derived heading (default: "July 2026", "2026", "July 14, 2026", "Week of July 14")
@@ -58,14 +58,14 @@ Use landscape for:
 
 **Month (portrait, default):**
 ```json
-{ "printer_id": "<from list_printers>", "view": "month", "date": "2026-07-01" }
+{ "printer_id": "<from lento_search, kind printer>", "view": "month", "date": "2026-07-01" }
 ```
 Prints July 2026, 7 columns × up to 6 weeks, roomy write-in cells.
 
 **Week, as a landscape timeline:**
 ```json
 {
-  "printer_id": "<from list_printers>",
+  "printer_id": "<from lento_search, kind printer>",
   "view": "week", "date": "2026-07-14",
   "orientation": "landscape",
   "day_start_hour": 7, "day_end_hour": 21
@@ -76,7 +76,7 @@ Any date inside the target week works — the tool snaps to the week containing 
 **Day, full 24 hours:**
 ```json
 {
-  "printer_id": "<from list_printers>",
+  "printer_id": "<from lento_search, kind printer>",
   "view": "day", "date": "2026-07-14",
   "day_start_hour": 0, "day_end_hour": 23,
   "title": "Launch Day"
@@ -87,7 +87,7 @@ An hour row for every hour of the day, midnight through 11pm, under a custom tit
 **Year, as the landscape wall-planner (recommended for "a year calendar"):**
 ```json
 {
-  "printer_id": "<from list_printers>",
+  "printer_id": "<from lento_search, kind printer>",
   "view": "year", "date": "2026-01-01",
   "orientation": "landscape"
 }
@@ -96,7 +96,7 @@ Any date in 2026 works — only the year matters. Tell the person this prints as
 
 **Year, portrait (only if they specifically want it stacked down the column):**
 ```json
-{ "printer_id": "<from list_printers>", "view": "year", "date": "2026-01-01" }
+{ "printer_id": "<from lento_search, kind printer>", "view": "year", "date": "2026-01-01" }
 ```
 12 stacked mini-months — compact but coarse; flag that landscape is more legible if they haven't already chosen portrait on purpose.
 

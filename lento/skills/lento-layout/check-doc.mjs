@@ -127,7 +127,9 @@ function checkBlock(b, p, depth, ctr) {
       }
       return null;
     }
-    case "image": return checkStr(b.src, `${p}.src`);
+    case "image":
+      if (b.reflow !== undefined && typeof b.reflow !== "boolean") return `${p}.reflow must be a boolean`;
+      return checkStr(b.src, `${p}.src`);
     case "rule": return (b.style !== undefined && b.style !== "solid" && b.style !== "dashed") ? `${p}.style must be "solid" or "dashed"` : null;
     case "spacer": return null;
     case "cut": return null;

@@ -1,6 +1,6 @@
 ---
 name: lento-recipe
-description: Use when someone asks the Lento to save, recall, scale, or print a recipe or a shopping/packing list — anything routed to print_recipe, print_list, save_recipe, list_recipes, get_recipe, update_recipe, delete_recipe, save_list, list_lists, get_list, update_list, delete_list, add_cook_note, or delete_cook_note.
+description: Use when someone asks the Lento to save, recall, scale, or print a recipe or a shopping/packing list — anything routed to print_recipe, print_list, save_recipe, update_recipe, delete_recipe, save_list, update_list, delete_list, add_cook_note, delete_cook_note, or a lento_search / lento_get with kind recipe or list.
 ---
 
 # Recipes and lists for the Lento
@@ -93,7 +93,7 @@ When an ingredient is split with a *vague* or *unstructured* portion — "a few 
 These are two different things that share the word "notes" and are easy to conflate:
 
 - **`Recipe.notes[]`** is part of the recipe document itself — authored guidance from the recipe's *source* ("can substitute margarine", "best made a day ahead"). It's set via `save_recipe`/`update_recipe` and travels with the recipe.
-- **Cook's notes** are the *user's own history* with this dish ("used half the salt", "needed 5 more minutes than stated") — stored **separately** from the recipe (its own table, via `add_cook_note`/`delete_cook_note`), so editing the recipe with `update_recipe` never touches or disturbs them. `get_recipe` returns both, distinctly (`recipe.notes` vs. `cook_notes`), and the most recent few cook's notes print on the card under their own "Cook's notes" heading, separate from the recipe's own "Notes" section.
+- **Cook's notes** are the *user's own history* with this dish ("used half the salt", "needed 5 more minutes than stated") — stored **separately** from the recipe (its own table, via `add_cook_note`/`delete_cook_note`), so editing the recipe with `update_recipe` never touches or disturbs them. `lento_get` (kind `recipe`) returns both, distinctly (`recipe.notes` vs. `cook_notes`), and the most recent few cook's notes print on the card under their own "Cook's notes" heading, separate from the recipe's own "Notes" section.
 
 Don't write a cook's observation into `Recipe.notes[]` — it'll get silently blown away the next time the recipe itself is edited. Use `add_cook_note`.
 
@@ -111,9 +111,9 @@ Feed it either a bare recipe object or the whole tool-call args (`{ "recipe": {.
 ## 9. The call sequence
 
 ```
-list_printers          # find the printer_id
+lento_search            # kind: "printer" — find the printer_id
 get_printer_status      # confirm it's reachable before printing
 save_recipe / print_recipe   # (or print_recipe with recipe_id to reprint a saved one)
 ```
 
-For a list: `list_printers` → `get_printer_status` → `save_list` / `print_list`. Saving first (`save_recipe`/`save_list`) is worth doing whenever the user might want the recipe/list again — `print_recipe`/`print_list` can then be called with `recipe_id`/`list_id` instead of re-sending the whole object, and a saved recipe's cook's notes print automatically.
+For a list: `lento_search` (kind `printer`) → `get_printer_status` → `save_list` / `print_list`. Saving first (`save_recipe`/`save_list`) is worth doing whenever the user might want the recipe/list again — `print_recipe`/`print_list` can then be called with `recipe_id`/`list_id` instead of re-sending the whole object, and a saved recipe's cook's notes print automatically.

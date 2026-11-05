@@ -67,13 +67,13 @@ The printer draws fixed 6mm cells and this tool can't change that, so width is a
 - **58mm paper → about 8 columns max.**
 - **80mm paper → about 12 columns max.**
 
-Don't know the width? Call `list_printers` and read the paper width, or default to **≤8 columns**. Fewer, well-chosen words on a grid that fits beats a big grid that shrinks illegibly or wraps.
+Don't know the width? Call `lento_search` (kind `printer`) and read the paper width, or default to **≤8 columns**. Fewer, well-chosen words on a grid that fits beats a big grid that shrinks illegibly or wraps.
 
 ## Calling the tool
 
 ```json
 {
-  "printer_id": "<from list_printers>",
+  "printer_id": "<from lento_search, kind printer>",
   "puzzle": {
     "title": "Cosmos Mini",
     "grid": [

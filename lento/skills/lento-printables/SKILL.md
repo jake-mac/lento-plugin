@@ -152,7 +152,7 @@ Any `print_document` output must pass the layout checker before you print it (it
 node ../lento-layout/check-doc.mjs your-doc.json   # feed the `document` object or the whole tool args
 ```
 
-Exit 1 = fix it first. A `print_markdown` job needs no checker (it's plain Markdown). Then print: `list_printers` → `get_printer_status` → `print_markdown` / `print_document`.
+Exit 1 = fix it first. A `print_markdown` job needs no checker (it's plain Markdown). Then print: `lento_search` (kind `printer`) → `get_printer_status` → `print_markdown` / `print_document`.
 
 ## Common mistakes
 

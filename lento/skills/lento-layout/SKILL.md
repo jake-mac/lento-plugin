@@ -24,7 +24,7 @@ A `PrintDoc` is `{ version: 1, page: {...}, content: <block> }`. You compose **b
 - `flow` — a flowchart (linear chain of labeled boxes + arrows): `{ type:'flow', nodes:[{ id, label }], edges:[{ from, to }], direction?:'LR'|'TD' }`. `from`/`to` reference node `id`s. Caps: 40 nodes, 60 edges. v1 is a straight chain (no branches/swimlanes).
 - `qr` — a scannable QR code: `{ type:'qr', data, ecc?:'L'|'M'|'Q'|'H', quietZone?, moduleMm?, caption?, align? }`. `data` (required) is the **finished payload string** — a URL, or a `WIFI:T:WPA;S:…;P:…;;` / `BEGIN:VCARD…END:VCARD` string you format yourself (the block is content-agnostic; it has no WiFi/contact typing). `ecc` defaults `M` (use `Q` for long/scan-critical codes). `quietZone` is the white-margin modules (int 0–16, default 4). `moduleMm` forces an exact module size; otherwise it prints ~35mm. `caption` is a centered line below; `align` defaults **left** so it composes mid-stack. For a *standalone* typed QR (WiFi/contact input, auto-cut), use the `print_qr` tool + the **lento-qr** skill instead.
 - `maze` — a maze grid (walls from `openRight`/`openDown` passage matrices + `entrance`/`exit`). Normally you don't hand-author this — use the dedicated `print_maze` tool (and the `lento-maze` skill), which builds it for you. It's listed here only because `validatePrintDoc` accepts it as a block. (Word searches likewise have their own `print_word_search` tool + `lento-wordsearch` skill rather than being hand-built here.)
-- `rule` — `{ type:'rule', style?:'solid'|'dashed' }` · `image` — `{ type:'image', src }` (src must be an uploaded-image URL — use the `upload_image` tool, passing a local `path` or `data_base64`, to mint one) · `spacer` · `cut` — `{ type:'cut' }` a cut marker between top-level `stack` children
+- `rule` — `{ type:'rule', style?:'solid'|'dashed' }` · `image` — `{ type:'image', src, reflow? }` (src must be an uploaded-image URL — use the `upload_image` tool, passing a local `path` or `data_base64`, to mint one); `reflow:false` prints it exactly as given, with no automatic comic-panel split or wide-image rotation · `spacer` · `cut` — `{ type:'cut' }` a cut marker between top-level `stack` children
 
 ## Page options
 
@@ -118,7 +118,21 @@ Exit 1 = fix it before printing. It also lints the common gotchas (flexbox align
 
 ## Sizing for the paper
 
-Widths are hard limits — the column is the paper width. 58mm ≈ 32 monospace chars / a couple of columns; 80mm ≈ 48 chars / a few columns. Read `paper_width_mm` from `list_printers` when it matters, and keep `{mm}` blocks within it (an over-wide `{mm}` block prints but overflows).
+Widths are hard limits — the column is the paper width. 58mm ≈ 32 monospace chars / a couple of columns; 80mm ≈ 48 chars / a few columns. Read the width from `lento_search` (kind `printer`): `paper_width_px` at `dpi` (576 px at 203 dpi is a 72 mm printable column on 80 mm paper; 384 px is 58 mm paper) when it matters, and keep `{mm}` blocks within it (an over-wide `{mm}` block prints but overflows).
+
+**Read `warnings` in the print result.** Every print tool returns `{ success: true, warnings: [...] }`.
+The most important entry is `overflow`: a word with no break opportunity (a file path, a long URL)
+is wider than the column, and its end was **clipped on the paper that just printed**. The message
+names the token. Fix it (smaller text via a higher `level`, a space or line break, or a shorter
+token) and reprint. `check-doc.mjs` can't catch this, because it validates structure and has no font
+metrics. An absent `warnings` key means nothing could be measured (a queued print whose cloud check failed
+or timed out), which is not the same as a clean print.
+
+**`pending: true` means it is still printing. Never reprint it.** A long print (an article, an edition)
+can outlast the tool call. Instead of an error you then get
+`{ pending: true, status: "printing" | "queued", job_id?, message }`. That is not a failure: the paper
+is still coming out, or the job is queued for the helper. Retrying prints it twice. Tell the user it's
+on its way. For `queued`, `cancel_print_job` with the `job_id` stops it if they want it stopped.
 
 ## Common mistakes
 

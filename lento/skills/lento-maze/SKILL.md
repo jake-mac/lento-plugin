@@ -14,7 +14,7 @@ proves it's solvable and fits before you print.
 ## The method
 
 1. **Pick a size** that fits the paper: **≤10 cols @ 58mm, ≤15 @ 80mm** (call
-   `list_printers` for the width, or default to ≤10). More cells = harder + smaller
+   `lento_search` (kind `printer`) for the width, or default to ≤10). More cells = harder + smaller
    passages; keep passages pen-navigable.
 2. **Generate** (if a sandbox is available, e.g. Claude Code):
 
@@ -44,7 +44,7 @@ hand-authoring a solvable maze is error-prone; use the generator whenever you ca
 
 ```json
 {
-  "printer_id": "<from list_printers>",
+  "printer_id": "<from lento_search, kind printer>",
   "puzzle": {
     "title": "Maze",
     "rows": 12, "cols": 12,

@@ -133,7 +133,7 @@ A link QR:
 
 ```json
 {
-  "printer_id": "<from list_printers>",
+  "printer_id": "<from lento_search, kind printer>",
   "url": "https://lento.press",
   "title": "Follow along",
   "caption": "lento.press"
@@ -144,7 +144,7 @@ A "scan to join WiFi" QR (the tool escapes and formats the WiFi string for you):
 
 ```json
 {
-  "printer_id": "<from list_printers>",
+  "printer_id": "<from lento_search, kind printer>",
   "wifi": { "ssid": "CafeNet", "password": "hunter2", "security": "WPA" },
   "ecc": "Q",
   "title": "Guest WiFi",

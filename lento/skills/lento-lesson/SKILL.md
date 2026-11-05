@@ -50,7 +50,7 @@ teach one chapter of it, at the learner's level, on paper. Build from the Codex;
 6. **Gate, then print.** Run BOTH checkers on your tool-args JSON. Fix every failure before printing:
    - `node <layout skill>/check-doc.mjs args.json`   (structural PrintDoc)
    - `node ./check-lesson.mjs args.json`             (glyph safety, skeleton, citations)
-7. **Print + advance.** Call `list_printers` -> `get_printer_status` -> `print_document`. On success,
+7. **Print + advance.** Call `lento_search` (kind `printer`) -> `get_printer_status` -> `print_document`. On success,
    bump the state's chapter counter and append what was taught.
 
 ## The skeleton (every lesson)
@@ -206,9 +206,18 @@ Fix it by making the text smaller instead: put the citation-definition lines at 
 (0.9x — the one heading step *below* body). The longest repo path then measures ~502 dots against a
 528-dot column. De-emphasising the reference block is the right call typographically anyway.
 
-**The kernel now warns rather than clipping silently** — `renderDocToCanvas` returns an `overflow`
-warning naming any unbreakable token wider than the column. If you render server-side, check
-`warnings`; a lesson should print none.
+**The kernel now warns rather than clipping silently.** `renderDocToCanvas` returns an `overflow`
+warning naming any unbreakable token wider than the column, and **`print_document`'s result carries
+it**: `{ "success": true, "warnings": [{ "code": "overflow", "message": "\"…render-doc.ts:94\" is
+558 dots wide but the column is 528…" }] }`. Read `warnings` after every print. A lesson should
+print none. An `overflow` entry means that citation has **already printed clipped**: move it to
+`level: 6` and reprint. Don't shorten the path. If the result has **no `warnings` key at all**, the
+print could not be measured (a hosted print whose cloud check failed or timed out). Treat that as
+unchecked, not clean.
+
+A lesson is a long print and can outlast the tool call. A result of `{ "pending": true, "status":
+"printing" | "queued", … }` is **not** a failure: the lesson is still printing, or it is queued for
+the helper. **Do not reprint it**, or it prints twice.
 
 ## Claim style and spacing
 
@@ -270,7 +279,7 @@ enumerate every stage; the diagram's job is the SHAPE of the pipeline, not compl
 
 ## Sizing for the paper
 
-80mm ≈ 48 monospace chars / 12 grid cols; 58mm ≈ 32 / 8. Read the width from `list_printers`. Keep
+80mm ≈ 48 monospace chars / 12 grid cols; 58mm ≈ 32 / 8. Read the width from `lento_search` (kind `printer`). Keep
 diagram lines short; a lesson should be bite-size — one concept, not a chapter dump.
 
 ## Common mistakes
